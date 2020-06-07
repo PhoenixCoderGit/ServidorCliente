@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/Unirse.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Sala.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Conectando.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Direccion.gd" type="Script" id=4]
+
+[node name="Sala" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Direccion" type="Button" parent="."]
+margin_left = 429.771
+margin_top = 118.924
+margin_right = 644.771
+margin_bottom = 222.924
+text = "Host"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ip" type="Label" parent="Direccion"]
+margin_left = 55.1019
+margin_top = -29.2007
+margin_right = 145.102
+margin_bottom = -15.2007
+text = "IP: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Unirse" type="Button" parent="."]
+margin_left = 478.046
+margin_top = 306.075
+margin_right = 633.046
+margin_bottom = 347.075
+text = "Unirse"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ip" type="LineEdit" parent="Unirse"]
+margin_left = -6.66541
+margin_top = 63.6673
+margin_right = 163.335
+margin_bottom = 108.667
+align = 1
+placeholder_text = "direccion"
+
+[node name="InvalidoIp" type="Label" parent="Unirse"]
+visible = false
+anchor_left = -3.063
+anchor_top = -7.493
+anchor_right = -3.063
+anchor_bottom = -7.493
+margin_left = 407.694
+margin_top = 430.19
+margin_right = 693.694
+margin_bottom = 480.19
+text = "Invalido ip"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Conectando" type="ColorRect" parent="."]
+visible = false
+margin_left = -34.0
+margin_top = -20.0
+margin_right = 1066.0
+margin_bottom = 640.0
+color = Color( 0.105882, 0.0784314, 0.0784314, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Conectando"]
+margin_left = 342.201
+margin_top = 225.209
+margin_right = 722.201
+margin_bottom = 382.209
+custom_colors/font_color = Color( 0.972549, 0.941176, 0.941176, 1 )
+text = "Se esta conectando"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Direccion" to="Direccion" method="direccion"]
+[connection signal="set_connect_type" from="Direccion" to="Conectando" method="_set_connect_type"]
+[connection signal="pressed" from="Unirse" to="Unirse" method="unirse"]
+[connection signal="set_connect_type" from="Unirse" to="Conectando" method="set_connect_type"]
